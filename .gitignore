@@ -1,0 +1,59 @@
+# ============================================
+# Игнорируем всё в корне
+# ============================================
+/*
+
+# ============================================
+# Разрешаем нужные каталоги
+# ============================================
+!/Assets/
+!/Packages/
+!/ProjectSettings/
+
+# ============================================
+# Разрешаем файлы в корне (whitelist)
+# ============================================
+
+# Документация
+!/README.md
+!/README*
+!/LICENSE
+!/LICENSE.*
+!/CHANGELOG.md
+!/CONTRIBUTING.md
+!/CODE_OF_CONDUCT.md
+!/AUTHORS
+!/NOTICE
+
+# Git-файлы
+!/.gitignore
+!/.gitattributes
+!/.gitmodules
+!/.mailmap
+
+# CI/CD
+!/.github/
+!/.gitlab-ci.yml
+!/.travis.yml
+!/.circleci/
+!/.azure/
+
+# Локальные настройки редактора/IDE
+!/.editorconfig
+!/.gitattributes
+!/.vsconfig
+!/.vscode/
+!/.idea/
+
+# Unity-специфичные файлы в корне
+!/.vsconfig
+!/.collabignore
+
+# Пакетные менеджеры / зависимости инструментов
+!/package.json
+!/package-lock.json
+!/yarn.lock
+!/*.asmdef
+
+# Прочее (опционально)
+!/.gitkeep
