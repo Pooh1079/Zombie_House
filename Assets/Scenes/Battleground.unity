@@ -119,53 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &65614873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 65614875}
-  - component: {fileID: 65614874}
-  m_Layer: 0
-  m_Name: GameOver
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &65614874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65614873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324cf1541120d3f47bcdf73d3cb74023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 661066613}
-  buildButton: {fileID: 0}
-  buildPanel: {fileID: 0}
---- !u!4 &65614875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65614873}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1367.0516, y: 452.68405, z: 13.905793}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1786064608}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98221354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,9 +2118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 3380317701692007882, guid: 9888c82f1ef705d47987f0e36982cc13, type: 3}
-  width: 65
-  height: 65
-  cellSize: 1
+  width: 85
+  height: 85
+  cellSize: 1.5
   startPosition: {x: -30, y: -10}
 --- !u!4 &681123177
 Transform:
@@ -2870,7 +2823,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 65614874}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: BackToMenu
         m_Mode: 1
@@ -4080,7 +4033,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1292398116}
   - component: {fileID: 1292398114}
-  - component: {fileID: 1292398117}
   m_Layer: 0
   m_Name: BuildSystem
   m_TagString: Untagged
@@ -4118,21 +4070,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1786064608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1292398117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292398113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7c20fd252c44d4482a24b48c55e466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTurret: {fileID: 0}
-  selectedPrice: 0
-  building: 1
 --- !u!1 &1334349593
 GameObject:
   m_ObjectHideFlags: 0
@@ -4216,7 +4153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 65614874}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: BackToMenu
         m_Mode: 1
@@ -4914,7 +4851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1647827198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5395,7 +5332,6 @@ Transform:
   - {fileID: 1486052331}
   - {fileID: 681123177}
   - {fileID: 1278708150}
-  - {fileID: 65614875}
   - {fileID: 172881550}
   - {fileID: 1200938497}
   - {fileID: 661805638}

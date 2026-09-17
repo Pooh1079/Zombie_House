@@ -1,15 +1,12 @@
 using UnityEngine;
 using TMPro;
 
-
 public class TurretUI : MonoBehaviour
 {
     public static TurretUI Instance;
 
-
     [Header("Panel")]
     public GameObject panel;
-
 
     [Header("Texts")]
     public TMP_Text nameText;
@@ -17,107 +14,162 @@ public class TurretUI : MonoBehaviour
     public TMP_Text upgradeText;
     public TMP_Text sellText;
 
-
     private Turret turret;
 
-
-
-    void Awake()
+    private void Awake()
     {
         Instance = this;
 
-        panel.SetActive(false);
+        if (panel != null)
+        {
+            panel.SetActive(false);
+        }
     }
-
-
 
     public void Open(Turret t)
     {
+        if (t == null)
+            return;
+
+        if (
+            t.levels == null ||
+            t.levels.Count == 0)
+        {
+            return;
+        }
+
         turret = t;
 
-
-        panel.SetActive(true);
-
-
+        if (panel != null)
+        {
+            panel.SetActive(true);
+        }
 
         TurretLevel level =
-        turret.levels[turret.currentLevel];
+            turret.levels[
+                turret.currentLevel
+            ];
 
+        string turretName =
+            turret.turretData != null
+                ? turret.turretData.turretName
+                : turret.name;
 
-
-        nameText.text =
-        turret.name +
-        " LV " +
-        (turret.currentLevel + 1);
-
-
+        if (nameText != null)
+        {
+            nameText.text =
+                turretName +
+                " LV " +
+                (turret.currentLevel + 1);
+        }
 
         float dps =
-        level.damage *
-        level.fireRate;
+            level.damage *
+            level.fireRate;
 
-
-
-        statsText.text =
-        "Урон: " + level.damage +
-        "\nРадиус: " + level.range +
-        "\nКулдаун: " + (1f / level.fireRate).ToString("0.0") +
-        "\nDPS: " + dps.ToString("0.0");
-
-
-
-        if (turret.currentLevel < turret.levels.Count - 1)
+        if (statsText != null)
         {
-            upgradeText.text =
-            "Улучшить: " +
-            turret.levels[turret.currentLevel + 1].upgradePrice;
+            statsText.text =
+                "Урон: " +
+                level.damage +
+
+                "\nДальность: " +
+                level.range +
+
+                "\nПерезарядка: " +
+                (
+                    level.fireRate > 0f
+                    ? (1f / level.fireRate)
+                        .ToString("0.0")
+                    : "-"
+                ) +
+
+                "\nDPS: " +
+                dps.ToString("0.0") +
+
+                "\nHP: " +
+                turret.currentHP.ToString("0") +
+                "/" +
+                level.maxHP.ToString("0") +
+
+                "\nОглушение: " +
+                level.stunDuration.ToString("0.0") +
+                " сек.";
+        }
+
+        if (
+            turret.currentLevel <
+            turret.levels.Count - 1)
+        {
+            int price =
+                turret.levels[
+                    turret.currentLevel + 1
+                ].upgradePrice;
+
+            if (upgradeText != null)
+            {
+                upgradeText.text =
+                    "Прокачать: " +
+                    price;
+            }
         }
         else
         {
-            upgradeText.text =
-            "MAX";
+            if (upgradeText != null)
+            {
+                upgradeText.text =
+                    "MAX";
+            }
         }
 
-
-        sellText.text =
-        "Продать: " +
-        level.sellPrice;
+        if (sellText != null)
+        {
+            sellText.text =
+                "Продать: " +
+                level.sellPrice;
+        }
     }
-
-
-
 
     public void Upgrade()
     {
         if (turret == null)
             return;
 
-
-        if (turret.currentLevel >= turret.levels.Count - 1)
+        if (
+            turret.currentLevel >=
+            turret.levels.Count - 1)
+        {
             return;
-
-
+        }
 
         int price =
-        turret.levels[turret.currentLevel + 1].upgradePrice;
+            turret.levels[
+                turret.currentLevel + 1
+            ].upgradePrice;
 
-
-
+        // Это именно боевые деньги.
         MoneyManager money =
-        FindObjectOfType<MoneyManager>();
+            FindObjectOfType<MoneyManager>();
 
-
-
-        if (money.SpendMoney(price))
+        if (money == null)
         {
-            turret.Upgrade();
+            Debug.LogError(
+                "TurretUI: MoneyManager не найден!"
+            );
 
-            Open(turret);
+            return;
         }
+
+        if (
+            !money.SpendMoney(price))
+        {
+            return;
+        }
+
+        turret.Upgrade();
+
+        Open(turret);
     }
-
-
-
 
     public void Sell()
     {
@@ -130,36 +182,46 @@ public class TurretUI : MonoBehaviour
         if (money != null)
         {
             money.AddMoney(
-                turret.levels[turret.currentLevel].sellPrice);
+                turret.levels[
+                    turret.currentLevel
+                ].sellPrice
+            );
         }
 
-        // Удаляем BuildBlock на месте турели
         Collider2D[] hits =
             Physics2D.OverlapCircleAll(
                 turret.transform.position,
-                0.3f);
+                0.3f
+            );
 
-        foreach (Collider2D hit in hits)
+        foreach (
+            Collider2D hit
+            in hits)
         {
             BuildBlock block =
                 hit.GetComponent<BuildBlock>();
 
             if (block != null)
             {
-                Destroy(block.gameObject);
+                Destroy(
+                    block.gameObject
+                );
             }
         }
 
-        Destroy(turret.gameObject);
+        Destroy(
+            turret.gameObject
+        );
 
         Close();
     }
 
-
-
     public void Close()
     {
-        panel.SetActive(false);
+        if (panel != null)
+        {
+            panel.SetActive(false);
+        }
 
         turret = null;
     }

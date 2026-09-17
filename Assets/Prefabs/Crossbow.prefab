@@ -104,35 +104,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcacc7db74ca6054580a19068db3b265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretData: {fileID: 0}
   rangeCirclePrefab: {fileID: 6637982351050792126, guid: a3059e510e5704449981424b4037f97b, type: 3}
   levels:
   - damage: 5
     range: 1.5
     fireRate: 1.2
+    maxHP: 100
+    stunDuration: 2
     upgradePrice: 50
     sellPrice: 25
     sprite: {fileID: -7696987413219275342, guid: 339da4e3d33a50844976fba39de1289b, type: 3}
+    scale: {x: 1, y: 1, z: 1}
     projectilePrefab: {fileID: 4545000638747477929, guid: ff3035e539bc54b41a71e4f100a161b3, type: 3}
     shootSound: {fileID: 0}
-    scale: {x: 1, y: 1, z: 1}
   - damage: 7
     range: 2
     fireRate: 1.5
+    maxHP: 100
+    stunDuration: 2
     upgradePrice: 30
     sellPrice: 15
     sprite: {fileID: -5728069109628089843, guid: e131434683787954da20672594f554c9, type: 3}
+    scale: {x: 0.1, y: 0.1, z: 1}
     projectilePrefab: {fileID: 4545000638747477929, guid: ff3035e539bc54b41a71e4f100a161b3, type: 3}
     shootSound: {fileID: 0}
-    scale: {x: 0.1, y: 0.1, z: 1}
   - damage: 6
     range: 2.5
     fireRate: 1.8
+    maxHP: 100
+    stunDuration: 2
     upgradePrice: 45
     sellPrice: 52
     sprite: {fileID: -8665214543638695123, guid: 3633dcc288496a44c8672cf1a2e69932, type: 3}
+    scale: {x: 0.01, y: 0.01, z: 0.1}
     projectilePrefab: {fileID: 4545000638747477929, guid: ff3035e539bc54b41a71e4f100a161b3, type: 3}
     shootSound: {fileID: 0}
-    scale: {x: 0.01, y: 0.01, z: 0.1}
   spriteRenderer: {fileID: 2468828207222852209}
   firePoint: {fileID: 3885514740694895116}
   rangeCircle: {fileID: 5912329300857297355}
@@ -140,6 +147,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   currentLevel: 0
+  currentHP: 3
+  isStunned: 0
 --- !u!114 &-6870551044057634797
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125ff61df1381ea439630dc7f61b1df9, type: 3}
+  m_Name: Samodelnio 1
+  m_EditorClassIdentifier: 
+  turretID: samodelnaya_turret
+  turretName: Samodelnio
+  icon: {fileID: -3159231660436344430, guid: ed980df2a91e8894688e4edefb03721e, type: 3}
+  turretPrefab: {fileID: 8245526154123866870, guid: 5e17da430cd0b7d42bb4d511ddca0004, type: 3}
+  buildPrice: 75
+  requiredXP: 0
+  rarity: 1
+  unlocked: 1
